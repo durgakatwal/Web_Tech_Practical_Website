@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML and Types</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .xml-example {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .xml-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .xml-type {
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #eee;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>XML and Types</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="xml-types.html">XML</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>XML Basics</h2>
+            <p>XML (eXtensible Markup Language) is a markup language that defines a set of rules for encoding documents
+                in a format that is both human-readable and machine-readable.</p>
+
+            <h3>Basic XML Example</h3>
+            <div class="xml-example">
+                &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                &lt;catalog&gt;
+                &lt;book id="bk101"&gt;
+                &lt;author&gt;Gambardella, Matthew&lt;/author&gt;
+                &lt;title&gt;XML Developer's Guide&lt;/title&gt;
+                &lt;genre&gt;Computer&lt;/genre&gt;
+                &lt;price&gt;44.95&lt;/price&gt;
+                &lt;publish_date&gt;2000-10-01&lt;/publish_date&gt;
+                &lt;description&gt;An in-depth look at creating applications with XML.&lt;/description&gt;
+                &lt;/book&gt;
+                &lt;book id="bk102"&gt;
+                &lt;author&gt;Ralls, Kim&lt;/author&gt;
+                &lt;title&gt;Midnight Rain&lt;/title&gt;
+                &lt;genre&gt;Fantasy&lt;/genre&gt;
+                &lt;price&gt;5.95&lt;/price&gt;
+                &lt;publish_date&gt;2000-12-16&lt;/publish_date&gt;
+                &lt;description&gt;A former architect battles corporate zombies.&lt;/description&gt;
+                &lt;/book&gt;
+                &lt;/catalog&gt;
+            </div>
+
+            <h3>XML Syntax Rules</h3>
+            <ul>
+                <li>XML documents must have a root element</li>
+                <li>All elements must have a closing tag</li>
+                <li>XML tags are case sensitive</li>
+                <li>Elements must be properly nested</li>
+                <li>Attribute values must be quoted</li>
+                <li>Special characters must be escaped (&amp;, &lt;, &gt;, &quot;, &apos;)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Types of XML</h2>
+            <div class="xml-types">
+                <div class="xml-type">
+                    <h3>Well-Formed XML</h3>
+                    <p>XML that follows all syntax rules is called "well-formed".</p>
+                    <div class="xml-example">
+                        &lt;note&gt;
+                        &lt;to&gt;Alice&lt;/to&gt;
+                        &lt;from&gt;Bob&lt;/from&gt;
+                        &lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+                        &lt;/note&gt;
+                    </div>
+                </div>
+
+                <div class="xml-type">
+                    <h3>Valid XML</h3>
+                    <p>XML that is validated against a DTD or XML Schema is called "valid".</p>
+                    <div class="xml-example">
+                        &lt;!DOCTYPE note SYSTEM "Note.dtd"&gt;
+                        &lt;note&gt;
+                        &lt;to&gt;Alice&lt;/to&gt;
+                        &lt;from&gt;Bob&lt;/from&gt;
+                        &lt;heading&gt;Reminder&lt;/heading&gt;
+                        &lt;body&gt;Don't forget the meeting!&lt;/body&gt;
+                        &lt;/note&gt;
+                    </div>
+                </div>
+
+                <div class="xml-type">
+                    <h3>XML Namespaces</h3>
+                    <p>Used to avoid element name conflicts.</p>
+                    <div class="xml-example">
+                        &lt;root xmlns:h="http://www.w3.org/TR/html4/"
+                        xmlns:f="http://www.w3schools.com/furniture"&gt;
+
+                        &lt;h:table&gt;
+                        &lt;h:tr&gt;
+                        &lt;h:td&gt;Apples&lt;/h:td&gt;
+                        &lt;h:td&gt;Bananas&lt;/h:td&gt;
+                        &lt;/h:tr&gt;
+                        &lt;/h:table&gt;
+
+                        &lt;f:table&gt;
+                        &lt;f:name&gt;Coffee Table&lt;/f:name&gt;
+                        &lt;f:width&gt;80&lt;/f:width&gt;
+                        &lt;/f:table&gt;
+                        &lt;/root&gt;
+                    </div>
+                </div>
+
+                <div class="xml-type">
+                    <h3>XML with CDATA</h3>
+                    <p>CDATA sections contain text that should not be parsed.</p>
+                    <div class="xml-example">
+                        &lt;script&gt;
+                        &lt;![CDATA[
+                        function matchwo(a, b) {
+                        if (a &lt; b &amp;&amp; a &lt; 0) {
+                        return 1;
+                        } else {
+                        return 0;
+                        }
+                        }
+                        ]]&gt;
+                        &lt;/script&gt;
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>XML Technologies</h2>
+            <ul>
+                <li><strong>XPath</strong> - Language for navigating XML documents</li>
+                <li><strong>XSLT</strong> - Language for transforming XML documents</li>
+                <li><strong>XQuery</strong> - Language for querying XML data</li>
+                <li><strong>XML Schema</strong> - Alternative to DTD for defining XML structure</li>
+                <li><strong>DOM</strong> - Document Object Model for programmatic access</li>
+                <li><strong>SAX</strong> - Simple API for XML (event-based parsing)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga Katwal. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

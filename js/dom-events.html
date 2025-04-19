@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM and Event Handling</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        #dom-demo {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .event-box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        
+        #form-validation {
+            max-width: 400px;
+            margin: 20px 0;
+        }
+        
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DOM and Event Handling</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="introduction.html">JS Intro</a></li>
+                <li><a href="dom-events.html">DOM & Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Document Object Model (DOM)</h2>
+            
+            <div id="dom-demo">
+                <p>This is a paragraph in the DOM demo div.</p>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                </ul>
+            </div>
+            
+            <button onclick="changeDom()">Change DOM</button>
+            <button onclick="addElement()">Add Element</button>
+            <button onclick="removeElement()">Remove Element</button>
+            
+            <h3>DOM Traversal</h3>
+            <button onclick="showParent()">Show Parent</button>
+            <button onclick="showChildren()">Show Children</button>
+            <button onclick="showSiblings()">Show Siblings</button>
+            
+            <div id="dom-output" style="margin-top: 10px;"></div>
+        </section>
+        
+        <section>
+            <h2>Event Handling</h2>
+            
+            <div class="event-box" id="click-box">
+                Click Me
+            </div>
+            
+            <div class="event-box" id="mouse-box">
+                Mouse Events
+            </div>
+            
+            <div class="event-box" id="key-box">
+                Focus for Key Events
+            </div>
+            
+            <input type="text" id="key-input" placeholder="Type here for key events">
+        </section>
+        
+        <section>
+            <h2>Form Validation</h2>
+            
+            <form id="form-validation" onsubmit="return validateForm()">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <span id="username-error" class="error"></span>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email">
+                    <span id="email-error" class="error"></span>
+                </div>
+                
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <span id="password-error" class="error"></span>
+                </div>
+                
+                <div>
+                    <label for="confirm">Confirm Password:</label>
+                    <input type="password" id="confirm" name="confirm">
+                    <span id="confirm-error" class="error"></span>
+                </div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Web Technology Lab. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // DOM Manipulation
+        function changeDom() {
+            const demoDiv = document.getElementById('dom-demo');
+            demoDiv.style.backgroundColor = '#f1c40f';
+            demoDiv.style.padding = '20px';
+            demoDiv.querySelector('p').textContent = 'The DOM has been changed!';
+        }
+        
+        function addElement() {
+            const demoDiv = document.getElementById('dom-demo');
+            const newItem = document.createElement('li');
+            newItem.textContent = 'New Item';
+            demoDiv.querySelector('ul').appendChild(newItem);
+        }
+        
+        function removeElement() {
+            const list = document.querySelector('#dom-demo ul');
+            if (list.lastChild) {
+                list.removeChild(list.lastChild);
+            }
+        }
+        
+        // DOM Traversal
+        function showParent() {
+            const output = document.getElementById('dom-output');
+            const item = document.querySelector('#dom-demo li');
+            output.textContent = `Parent of li is: ${item.parentNode.nodeName}`;
+        }
+        
+        function showChildren() {
+            const output = document.getElementById('dom-output');
+            const demoDiv = document.getElementById('dom-demo');
+            let children = [];
+            for (let child of demoDiv.childNodes) {
+                children.push(child.nodeName);
+            }
+            output.textContent = `Children of div: ${children.join(', ')}`;
+        }
+        
+        function showSiblings() {
+            const output = document.getElementById('dom-output');
+            const item = document.querySelector('#dom-demo li');
+            let siblings = [];
+            let sibling = item.parentNode.firstChild;
+            while (sibling) {
+                if (sibling.nodeType === 1 && sibling !== item) {
+                    siblings.push(sibling.nodeName);
+                }
+                sibling = sibling.nextSibling;
+            }
+            output.textContent = `Siblings of li: ${siblings.join(', ')}`;
+        }
+        
+        // Event Handling
+        document.getElementById('click-box').addEventListener('click', function() {
+            this.textContent = 'Clicked!';
+            this.style.backgroundColor = '#2ecc71';
+        });
+        
+        document.getElementById('mouse-box').addEventListener('mouseover', function() {
+            this.textContent = 'Mouse Over!';
+            this.style.backgroundColor = '#e74c3c';
+        });
+        
+        document.getElementById('mouse-box').addEventListener('mouseout', function() {
+            this.textContent = 'Mouse Out!';
+            this.style.backgroundColor = '#3498db';
+        });
+        
+        document.getElementById('key-box').addEventListener('focus', function() {
+            this.textContent = 'Focused!';
+            this.style.backgroundColor = '#9b59b6';
+        });
+        
+        document.getElementById('key-box').addEventListener('blur', function() {
+            this.textContent = 'Blurred!';
+            this.style.backgroundColor = '#3498db';
+        });
+        
+        document.getElementById('key-input').addEventListener('keyup', function(e) {
+            document.getElementById('key-box').textContent = `Key: ${e.key} (${e.keyCode})`;
+        });
+        
+        // Form Validation
+        function validateForm() {
+            let isValid = true;
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate username
+            if (username.length < 4) {
+                document.getElementById('username-error').textContent = 'Username must be at least 4 characters';
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('password-error').textContent = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (password !== confirm) {
+                document.getElementById('confirm-error').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Form submitted successfully!');
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

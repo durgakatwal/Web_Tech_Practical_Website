@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Introduction</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        #output-area {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>JavaScript Introduction</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="introduction.html">JS Intro</a></li>
+                <li><a href="dom-events.html">DOM & Events</a></li>
+                <li><a href="formvalidation-chatgpt.html">Form validation</a></li>                
+                <li><a href="jquery.html">jquery</a></li>                
+
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>JavaScript Basics</h2>
+            
+            <h3>Variables and Data Types</h3>
+            <button onclick="demoVariables()">Run Variable Demo</button>
+            <div id="output-area"></div>
+            
+            <h3>Functions</h3>
+            <button onclick="greetUser()">Greet User</button>
+            <button onclick="calculateArea()">Calculate Area</button>
+            
+            <h3>Pop-up Boxes</h3>
+            <button onclick="showAlert()">Alert</button>
+            <button onclick="showConfirm()">Confirm</button>
+            <button onclick="showPrompt()">Prompt</button>
+            
+            <h3>Arrays</h3>
+            <button onclick="demoArrays()">Array Demo</button>
+            
+            <h3>Objects</h3>
+            <button onclick="demoObjects()">Object Demo</button>
+            
+            <h3>Constructors</h3>
+            <button onclick="demoConstructors()">Constructor Demo</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Web Technology Lab. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Variables and Data Types
+        function demoVariables() {
+            const output = document.getElementById('output-area');
+            output.innerHTML = '';
+            
+            // Primitive types
+            let message = "Hello, JavaScript!";
+            let num = 42;
+            let isTrue = true;
+            let empty = null;
+            let notDefined;
+            
+            output.innerHTML += `<p>String: ${message}</p>`;
+            output.innerHTML += `<p>Number: ${num}</p>`;
+            output.innerHTML += `<p>Boolean: ${isTrue}</p>`;
+            output.innerHTML += `<p>Null: ${empty}</p>`;
+            output.innerHTML += `<p>Undefined: ${notDefined}</p>`;
+            
+            // Type conversion
+            let strNum = "123";
+            output.innerHTML += `<p>String to Number: ${Number(strNum)}</p>`;
+            output.innerHTML += `<p>Number to String: ${String(num)}</p>`;
+            output.innerHTML += `<p>Boolean to String: ${String(isTrue)}</p>`;
+        }
+        
+        // Functions
+        function greetUser() {
+            alert("Hello there! Welcome to JavaScript!");
+        }
+        
+        function calculateArea() {
+            let width = prompt("Enter width:");
+            let height = prompt("Enter height:");
+            let area = width * height;
+            alert(`The area is: ${area}`);
+        }
+        
+        // Pop-up boxes
+        function showAlert() {
+            alert("This is an alert box!");
+        }
+        
+        function showConfirm() {
+            let result = confirm("Do you want to continue?");
+            alert(`You clicked ${result ? 'OK' : 'Cancel'}`);
+        }
+        
+        function showPrompt() {
+            let name = prompt("What's your name?", "Guest");
+            alert(`Hello, ${name || 'Anonymous'}!`);
+        }
+        
+        // Arrays
+        function demoArrays() {
+            const output = document.getElementById('output-area');
+            output.innerHTML = '';
+            
+            let fruits = ["Apple", "Banana", "Orange"];
+            output.innerHTML += `<p>Original Array: ${fruits.join(', ')}</p>`;
+            
+            // Array methods
+            fruits.push("Mango");
+            output.innerHTML += `<p>After push: ${fruits.join(', ')}</p>`;
+            
+            fruits.pop();
+            output.innerHTML += `<p>After pop: ${fruits.join(', ')}</p>`;
+            
+            fruits.unshift("Strawberry");
+            output.innerHTML += `<p>After unshift: ${fruits.join(', ')}</p>`;
+            
+            fruits.shift();
+            output.innerHTML += `<p>After shift: ${fruits.join(', ')}</p>`;
+            
+            let sliced = fruits.slice(1, 2);
+            output.innerHTML += `<p>Sliced: ${sliced.join(', ')}</p>`;
+            
+            let mapped = fruits.map(fruit => fruit.toUpperCase());
+            output.innerHTML += `<p>Mapped: ${mapped.join(', ')}</p>`;
+        }
+        
+        // Objects
+        function demoObjects() {
+            const output = document.getElementById('output-area');
+            output.innerHTML = '';
+            
+            // Object literal
+            let person = {
+                firstName: "John",
+                lastName: "Doe",
+                age: 30,
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+            
+            output.innerHTML += `<p>Person: ${person.fullName()}, Age: ${person.age}</p>`;
+            
+            // Adding properties
+            person.email = "john@example.com";
+            output.innerHTML += `<p>Email: ${person.email}</p>`;
+        }
+        
+        // Constructors
+        function demoConstructors() {
+            const output = document.getElementById('output-area');
+            output.innerHTML = '';
+            
+            // Constructor function
+            function Car(make, model, year) {
+                this.make = make;
+                this.model = model;
+                this.year = year;
+                this.displayInfo = function() {
+                    return `${this.year} ${this.make} ${this.model}`;
+                };
+            }
+            
+            // Create instances
+            let car1 = new Car("Toyota", "Camry", 2020);
+            let car2 = new Car("Honda", "Accord", 2018);
+            
+            output.innerHTML += `<p>Car 1: ${car1.displayInfo()}</p>`;
+            output.innerHTML += `<p>Car 2: ${car2.displayInfo()}</p>`;
+        }
+    </script>
+</body>
+</html>

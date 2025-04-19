@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .jquery-box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            color: white;
+            margin: 10px;
+            display: inline-block;
+            text-align: center;
+            line-height: 150px;
+            transition: all 0.3s;
+        }
+        
+        #animation-box {
+            width: 100px;
+            height: 100px;
+            background-color: #e74c3c;
+            position: relative;
+        }
+    </style>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>jQuery</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="jquery.html">jQuery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>jQuery Basics</h2>
+            
+            <h3>Selectors</h3>
+            <button id="select-btn">Select Elements</button>
+            <button id="add-class-btn">Add Class</button>
+            <button id="toggle-class-btn">Toggle Class</button>
+            
+            <div class="jquery-box">Box 1</div>
+            <div class="jquery-box">Box 2</div>
+            <div class="jquery-box">Box 3</div>
+            
+            <h3>DOM Manipulation</h3>
+            <button id="change-text-btn">Change Text</button>
+            <button id="append-btn">Append Element</button>
+            <button id="remove-btn">Remove Element</button>
+            
+            <div id="dom-manipulation" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+                <p>Original content</p>
+            </div>
+            
+            <h3>Event Handling</h3>
+            <button id="event-btn">Click Me</button>
+            <div id="event-output" style="margin: 10px 0;"></div>
+            
+            <h3>Effects and Animations</h3>
+            <button id="hide-btn">Hide</button>
+            <button id="show-btn">Show</button>
+            <button id="toggle-btn">Toggle</button>
+            <button id="fade-btn">Fade</button>
+            <button id="slide-btn">Slide</button>
+            <button id="animate-btn">Animate</button>
+            
+            <div id="animation-box">Animate Me</div>
+            
+            <h3>AJAX</h3>
+            <button id="load-btn">Load Content</button>
+            <div id="ajax-content" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0; min-height: 50px;">
+                AJAX content will appear here
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga Katwal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Selectors
+            $('#select-btn').click(function() {
+                $('.jquery-box').css('border', '2px solid #e74c3c');
+            });
+            
+            $('#add-class-btn').click(function() {
+                $('.jquery-box').addClass('highlight');
+            });
+            
+            $('#toggle-class-btn').click(function() {
+                $('.jquery-box').toggleClass('highlight');
+            });
+            
+            // DOM Manipulation
+            $('#change-text-btn').click(function() {
+                $('#dom-manipulation p').text('Text changed with jQuery!');
+            });
+            
+            $('#append-btn').click(function() {
+                $('#dom-manipulation').append('<p>New paragraph appended</p>');
+            });
+            
+            $('#remove-btn').click(function() {
+                $('#dom-manipulation p:last').remove();
+            });
+            
+            // Event Handling
+            $('#event-btn').click(function() {
+                $('#event-output').text('Button clicked!');
+            }).dblclick(function() {
+                $('#event-output').text('Button double-clicked!');
+            }).hover(
+                function() { $(this).css('background-color', '#2ecc71'); },
+                function() { $(this).css('background-color', ''); }
+            );
+            
+            // Effects and Animations
+            $('#hide-btn').click(function() {
+                $('#animation-box').hide();
+            });
+            
+            $('#show-btn').click(function() {
+                $('#animation-box').show();
+            });
+            
+            $('#toggle-btn').click(function() {
+                $('#animation-box').toggle();
+            });
+            
+            $('#fade-btn').click(function() {
+                $('#animation-box').fadeToggle();
+            });
+            
+            $('#slide-btn').click(function() {
+                $('#animation-box').slideToggle();
+            });
+            
+            $('#animate-btn').click(function() {
+                $('#animation-box').animate({
+                    left: '100px',
+                    opacity: '0.5',
+                    height: '150px',
+                    width: '150px'
+                }, 1000).animate({
+                    left: '0',
+                    opacity: '1',
+                    height: '100px',
+                    width: '100px'
+                }, 1000);
+            });
+            
+            // AJAX
+            $('#load-btn').click(function() {
+                $('#ajax-content').load('sample-content.txt', function(response, status) {
+                    if (status === 'error') {
+                        $(this).html('Failed to load content');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

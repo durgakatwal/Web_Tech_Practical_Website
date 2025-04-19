@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Types</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <!-- Internal CSS -->
+    <style>
+        .internal-style {
+            color: green;
+            font-style: italic;
+            border: 2px dashed green;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Types: Inline, Internal, External</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="inline-internal-external.html">CSS Types</a></li>
+                <li><a href="selectors.html">Selectors</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Three Ways to Apply CSS</h2>
+            
+            <div style="color: red; border: 2px solid red; padding: 10px; margin: 10px 0;">
+                This div uses <strong>inline CSS</strong> applied directly with the style attribute.
+            </div>
+            
+            <div class="internal-style">
+                This div uses <strong>internal CSS</strong> defined in the &lt;style&gt; tag in the head section.
+            </div>
+            
+            <div class="external-style">
+                This div uses <strong>external CSS</strong> from a separate .css file.
+            </div>
+            
+            <div style="background-color: #f0f0f0; padding: 15px; margin-top: 20px;">
+                <h3>Priority Order</h3>
+                <p>When multiple styles are applied to the same element, they follow this priority:</p>
+                <ol>
+                    <li><strong>Inline CSS</strong> (highest priority)</li>
+                    <li><strong>Internal CSS</strong></li>
+                    <li><strong>External CSS</strong></li>
+                    <li>Browser default styles (lowest priority)</li>
+                </ol>
+                
+                <div style="color: purple; margin-top: 10px;" class="internal-style external-style">
+                    This div has all three types applied. Inline (purple) overrides internal (green) which overrides external.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga Katwal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

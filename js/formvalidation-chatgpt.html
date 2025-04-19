@@ -1,0 +1,203 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery DOM & Form Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .error { color: red; display: none; }
+    .success { color: green; display: none; }
+    input, button { margin-top: 10px; display: block; }
+  </style>
+</head>
+<body>
+
+  <h2>User Registration</h2>
+  
+  <form id="registrationForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+
+    <button type="submit">Register</button>
+
+    <p class="error" id="errorMsg">Please fill all fields correctly!</p>
+    <p class="success" id="successMsg">Form submitted successfully!</p>
+  </form>
+
+  <hr>
+
+  <button id="changeHeading">Change Heading</button>
+
+  <script src="script.js"></script>
+
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM and Event Handling</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        #dom-demo {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .event-box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        
+        #form-validation {
+            max-width: 400px;
+            margin: 20px 0;
+        }
+        
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Form Validation</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="introduction.html">JS Intro</a></li>
+                <li><a href="dom-events.html">DOM & Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    
+        
+        <section>
+            <h2>Form Validation</h2>
+            
+            <form id="form-validation" onsubmit="return validateForm()">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username">
+                    <span id="username-error" class="error"></span>
+                </div>
+                
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email">
+                    <span id="email-error" class="error"></span>
+                </div>
+                
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <span id="password-error" class="error"></span>
+                </div>
+                
+                <div>
+                    <label for="confirm">Confirm Password:</label>
+                    <input type="password" id="confirm" name="confirm">
+                    <span id="confirm-error" class="error"></span>
+                </div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga Katwal. All rights reserved.</p>
+    </footer>
+
+    <script>
+        
+    
+        
+    
+        
+        // Form Validation
+        function validateForm() {
+            let isValid = true;
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirm').value;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate username
+            if (username.length < 4) {
+                document.getElementById('username-error').textContent = 'Username must be at least 4 characters';
+                isValid = false;
+            }
+            
+            // Validate email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').textContent = 'Please enter a valid email';
+                isValid = false;
+            }
+            
+            // Validate password
+            if (password.length < 6) {
+                document.getElementById('password-error').textContent = 'Password must be at least 6 characters';
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (password !== confirm) {
+                document.getElementById('confirm-error').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                alert('Form submitted successfully!');
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

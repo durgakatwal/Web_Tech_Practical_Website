@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        #event-box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML Events</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="elements.html">Elements</a></li>
+                <li><a href="formatting.html">Formatting</a></li>
+                <li><a href="anchors-lists.html">Anchors & Lists</a></li>
+                <li><a href="tables-forms.html">Tables & Forms</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Common HTML Events</h2>
+            
+            <h3>Mouse Events</h3>
+            <div id="event-box" 
+                 onclick="this.textContent='Clicked!'; this.style.backgroundColor='lightgreen'" 
+                 ondblclick="this.textContent='Double Clicked!'; this.style.backgroundColor='lightcoral'"
+                 onmouseover="this.textContent='Mouse Over!'; this.style.backgroundColor='lightyellow'"
+                 onmouseout="this.textContent='Mouse Out!'; this.style.backgroundColor='lightblue'"
+                 onmousedown="this.textContent='Mouse Down!'; this.style.backgroundColor='lightpink'"
+                 onmouseup="this.textContent='Mouse Up!'; this.style.backgroundColor='lightsalmon'">
+                Interact with me!
+            </div>
+            
+            <h3>Keyboard Events</h3>
+            <input type="text" 
+                   onkeydown="document.getElementById('keydown').textContent='Key Down: '+event.key"
+                   onkeyup="document.getElementById('keyup').textContent='Key Up: '+event.key"
+                   onkeypress="document.getElementById('keypress').textContent='Key Press: '+event.key"
+                   placeholder="Type here...">
+            <p id="keydown">Key Down: </p>
+            <p id="keyup">Key Up: </p>
+            <p id="keypress">Key Press: </p>
+            
+            <h3>Form Events</h3>
+            <form onsubmit="alert('Form submitted!'); return false">
+                <input type="text" onfocus="this.style.backgroundColor='lightyellow'" 
+                                  onblur="this.style.backgroundColor='white'"
+                                  placeholder="Focus/blur test">
+                <input type="text" onchange="alert('Value changed!')" placeholder="Change test">
+                <button type="submit">Submit</button>
+            </form>
+            
+            <h3>Window Events</h3>
+            <button onclick="window.open('https://www.w3schools.com', '_blank')">Open New Window</button>
+            <button onclick="window.print()">Print Page</button>
+            <p id="resize-text">Window size: </p>
+            <script>
+                window.onresize = function() {
+                    document.getElementById('resize-text').textContent = 
+                        'Window size: ' + window.innerWidth + 'x' + window.innerHeight;
+                };
+            </script>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga katwal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

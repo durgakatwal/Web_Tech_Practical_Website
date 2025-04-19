@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID and Class Selectors</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        /* ID Selector - unique identifier */
+        #main-heading {
+            color: #2c3e50;
+            text-decoration: underline;
+            text-align: center;
+        }
+        
+        /* Class Selector - reusable style */
+        .highlight {
+            background-color: yellow;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: #e74c3c;
+            border-left: 3px solid #e74c3c;
+            padding-left: 10px;
+        }
+        
+        .success {
+            color: #27ae60;
+            border-left: 3px solid #27ae60;
+            padding-left: 10px;
+        }
+        
+        /* Combined selector */
+        p.highlight {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="main-heading">ID and Class Selectors</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="inline-internal-external.html">CSS Types</a></li>
+                <li><a href="selectors.html">Selectors</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Understanding Selectors</h2>
+            
+            <div class="warning">
+                <p>IDs should be unique - only one element per ID in a document.</p>
+            </div>
+            
+            <div class="success">
+                <p>Classes can be reused - multiple elements can share the same class.</p>
+            </div>
+            
+            <h3>ID Selector Example</h3>
+            <p>The heading above has <span class="highlight">id="main-heading"</span> which is styled with <code>#main-heading</code> in CSS.</p>
+            
+            <h3>Class Selector Examples</h3>
+            <p>This paragraph has a <span class="highlight">highlighted section</span> using the <code>highlight</code> class.</p>
+            
+            <p class="highlight">This entire paragraph has the <code>highlight</code> class applied.</p>
+            
+            <p>Notice how the <code>p.highlight</code> selector in CSS adds italic styling only to paragraphs with the highlight class.</p>
+            
+            <h3>Multiple Classes</h3>
+            <div class="warning highlight">
+                This div has both <code>warning</code> and <code>highlight</code> classes applied.
+            </div>
+        </section>
+        
+        <section>
+            <h2>Selector Specificity</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Selector Type</th>
+                        <th>Example</th>
+                        <th>Specificity Weight</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID</td>
+                        <td><code>#main-heading</code></td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Class</td>
+                        <td><code>.highlight</code></td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Element</td>
+                        <td><code>p</code></td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="warning" style="margin-top: 20px;">
+                <p>When multiple selectors apply to the same element, the one with higher specificity wins.</p>
+                <p>Inline styles (using the style attribute) have even higher specificity than ID selectors.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga Katwal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

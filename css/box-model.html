@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .box-model-demo {
+            width: 300px;
+            height: 200px;
+            padding: 20px;
+            border: 10px solid #3498db;
+            margin: 30px;
+            background-color: #f1c40f;
+            color: #2c3e50;
+        }
+        
+        .box {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: #e74c3c;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+        }
+        
+        .margin-demo {
+            margin: 20px;
+            background-color: #2ecc71;
+        }
+        
+        .padding-demo {
+            padding: 20px;
+            background-color: #9b59b6;
+        }
+        
+        .border-demo {
+            border: 10px solid #e67e22;
+            background-color: #34495e;
+        }
+        
+        .box-sizing-demo {
+            width: 200px;
+            height: 100px;
+            padding: 20px;
+            border: 5px solid #16a085;
+            margin: 10px;
+            display: inline-block;
+        }
+        
+        .content-box {
+            box-sizing: content-box;
+        }
+        
+        .border-box {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Box Model</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="box-model.html">Box Model</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Understanding the Box Model</h2>
+            
+            <div class="box-model-demo">
+                This is a box demonstrating the CSS box model.
+                <ul>
+                    <li>Content Area (yellow)</li>
+                    <li>Padding (space inside border)</li>
+                    <li>Border (blue line)</li>
+                    <li>Margin (space outside border)</li>
+                </ul>
+            </div>
+            
+            <h3>Box Model Components</h3>
+            <div style="margin-bottom: 20px;">
+                <div class="box margin-demo">Margin</div>
+                <div class="box padding-demo">Padding</div>
+                <div class="box border-demo">Border</div>
+            </div>
+            
+            <h3>Box Sizing</h3>
+            <div>
+                <div class="box-sizing-demo content-box">
+                    content-box (default)<br>
+                    Width: 200px + padding + border
+                </div>
+                <div class="box-sizing-demo border-box">
+                    border-box<br>
+                    Width: 200px includes padding & border
+                </div>
+            </div>
+            
+            <h3>Box Model Properties</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                        <th>Example Values</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>width, height</td>
+                        <td>Content area dimensions</td>
+                        <td>200px, 50%, auto</td>
+                    </tr>
+                    <tr>
+                        <td>padding</td>
+                        <td>Space inside border</td>
+                        <td>10px, 5% 10px, 1em 2em 3em 4em</td>
+                    </tr>
+                    <tr>
+                        <td>border</td>
+                        <td>Border around padding</td>
+                        <td>1px solid black, 5px dotted #ccc</td>
+                    </tr>
+                    <tr>
+                        <td>margin</td>
+                        <td>Space outside border</td>
+                        <td>20px, 10px auto, 1rem 2rem</td>
+                    </tr>
+                    <tr>
+                        <td>box-sizing</td>
+                        <td>How dimensions are calculated</td>
+                        <td>content-box, border-box</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Durga Katwal. All rights reserved.</p>
+    </footer>
+</body>
+</html>

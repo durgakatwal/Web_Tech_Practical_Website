@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Functions and Arrays</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PHP Functions and Arrays</h1>
+        <nav>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="introduction.php">PHP Intro</a></li>
+                <li><a href="functions-arrays.php">Functions & Arrays</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>PHP Functions</h2>
+            
+            <?php
+            // Basic function
+            function greet($name) {
+                return "Hello, $name!";
+            }
+            
+            echo "<p>" . greet("Alice") . "</p>";
+            echo "<p>" . greet("Bob") . "</p>";
+            
+            // Function with default parameter
+            function sayHello($name = "Guest") {
+                return "Hello, $name!";
+            }
+            
+            echo "<p>" . sayHello() . "</p>";
+            echo "<p>" . sayHello("Charlie") . "</p>";
+            
+            // Returning multiple values
+            function calculate($a, $b) {
+                $sum = $a + $b;
+                $product = $a * $b;
+                return array($sum, $product);
+            }
+            
+            list($s, $p) = calculate(5, 3);
+            echo "<p>Sum: $s, Product: $p</p>";
+            ?>
+            
+            <h3>Variable Scope</h3>
+            <?php
+            $globalVar = "I'm global";
+            
+            function testScope() {
+                $localVar = "I'm local";
+                global $globalVar;
+                echo "<p>Inside function: $globalVar</p>";
+                echo "<p>Local variable: $localVar</p>";
+            }
+            
+            testScope();
+            echo "<p>Outside function: $globalVar</p>";
+            // echo "<p>Local variable outside: $localVar</p>"; // This would cause an error
+            ?>
+        </section>
+        
+        <section>
+            <h2>PHP Arrays</h2>
+            
+            <?php
+            // Indexed array
+            $colors = array("Red", "Green", "Blue");
+            echo "<p>First color: " . $colors[0] . "</p>";
+            
+            // Associative array
+            $person = array(
+                "name" => "John",
+                "age" => 30,
+                "city" => "New York"
+            );
+            echo "<p>" . $person['name'] . " is " . $person['age'] . " years old.</p>";
+            
+            // Multidimensional array
+            $students = array(
+                array("Alice", 20, "Computer Science"),
+                array("Bob", 22, "Mathematics"),
+                array("Charlie", 21, "Physics")
+            );
+            echo "<p>Student 1: " . $students[0][0] . ", " . $students[0][2] . "</p>";
+            ?>
+            
+            <h3>Array Functions</h3>
+            <pre>
+<?php
+// Count
+echo "Count: " . count($colors) . "\n";
+
+// Sort
+sort($colors);
+print_r($colors);
+
+// Reverse sort
+rsort($colors);
+print_r($colors);
+
+// Associative sort by value
+asort($person);
+print_r($person);
+
+// Associative sort by key
+ksort($person);
+print_r($person);
+
+// Array merge
+$moreColors = array("Yellow", "Purple");
+$allColors = array_merge($colors, $moreColors);
+print_r($allColors);
+
+// Array push
+array_push($colors, "Black");
+print_r($colors);
+
+// Array search
+$key = array_search("Green", $colors);
+echo "Green found at index: $key\n";
+?>
+            </pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <?php echo date('Y'); ?> Web Technology Lab. All rights reserved.</p>
+    </footer>
+</body>
+</html>
